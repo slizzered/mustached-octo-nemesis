@@ -10,6 +10,8 @@ string(REPLACE " " "_" FolderName ${FolderName})
 file(GLOB_RECURSE _SOURCES "src" "*.cpp")
 file(GLOB_RECURSE _HEADERS "src" "*.hpp")
 
+find_package(Boost 1.60 REQUIRED COMPONENTS graph)
+
 # Always add all files to the target executable build call to add them to the build project.
 ADD_EXECUTABLE(${FolderName} ${_SOURCES} ${_HEADERS})
-
+TARGET_LINK_LIBRARIES(${FolderName} ${Boost_LIBRARIES})
